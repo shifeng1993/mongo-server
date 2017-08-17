@@ -1,5 +1,5 @@
-# Koa2Server
-一个使用koa2构建的服务。
+# mongo-server
+一个使用koa2和mongodb构建的服务。
 
 可以mock数据，反向代理，支持http和tcp。
 #### 技术栈：
