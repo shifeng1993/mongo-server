@@ -1,85 +1,55 @@
-待添加特性：
+# Koa2Server
+一个使用koa2构建的服务。
 
-一、用户类，
-    1.用户注册
-        用户唯一id
-        用户账号
-        用户密码
-        用户可变名称
-        用户手机号码
-    2.用户登录
-        登录可用手机号和账号任意
-    3.用户详情页
-    4.用户收藏模块
-    5.用户购物车模块
-    6.用户订单模块
-        增删改查订单
-二、商品类
-    1.商品列表模块
-        商品简略属性
-    2.商品信息信息模块
-        商品详细属性，
-        直接购买，
-        添加喜欢，
-        添加购物车
-    3.模糊搜索模块，主要是在商品页中搜索商品
+可以mock数据，反向代理，支持http和tcp。
+#### 技术栈：
+- nodejs
+- koa2
+- es6/7
+- mockjs
+- koa2-pixie-proxy
+- RESTful API
+- mongoDB
+- mongoose
+- socket.io
 
-mongodb 模型设计，
+## 使用方法
+
+`git clone https://github.com/shifeng1993/mongo-server.git server`
+
+`cd server`
+
+`npm install`
+
+二选一
+`supervisor app` / `node app`
+
+## 项目结构
+`app.js`为主文件，平时做模拟数据用`supervisor`启动即可（没有的话用npm安装），也可以用`node`启动。
+
+`routes`目录下为api路由。对应添加即可。
+
+`controllers`目录下为api数据的控制，更改以及序列化。
+
+`models`目录下为对数据的读写。
+
+## 版本特性
+#### 1.0.0
+1.使用了koa2当做项目底层，node版本要求为大于7.6.0
+
+2.使用了es6/7新特性来做并发，性能更高。
+
+3.使用了shell脚本用 pm2 来守护进程，更稳定。
+
+4.使用了mockjs模拟假数据。
+
+5.添加对数据库的支持，orm模块为`mongoose`。
+
+6.添加了中间层服务代理支持，在`routes/index.js`内部即可轻松添加，项目不需要则删除。
+
+7.添加对websocket的支持，socket.io库。
+
+## 待添加特性
+暂无
 
 
-以下关于时间全部用时间戳存储，状态全部为int 从0开始，分页全部从1开始
-关于金额， 全部用int类型存储，，单位为分，前端进行转换处理。
-1.用户类
-user: [{
-    userId: int,      // 用户唯一id
-    userName: String, // 账号
-    userphone: String, // 手机
-    password: String, // 密码
-    nickname: String, // 昵称
-    summary: String,  //简介
-    userImg: String // 头像
-    用户名，密码，电话，邮箱，身份证号，地址，姓名，昵称
-    // 订单集合 
-    orders:[{
-        orderId: int, // 订单编号
-        orderState: int,  //订单状态
-        createTime: timestamp  // 订单创建时间
-        dealTime: timestamp   // 订单成交时间
-        orderTotal: int,  // 订单总价
-        actuaPayment: int // 实付款
-        // 商品简单属性
-        goodsInfo: [{
-            goodsId: int, //商品id
-            goodsName: String, //商品名称
-            goodsSummary: String, // 商品简介
-            goodsImg: String  //商品图片
-            goodsPrice: int // 商品标价
-        }]
-    }],
-    // 购物车集合
-    shoppingCart: [{
-        goodsId: int, //商品id
-        goodsName: String, //商品名称
-        goodsSummary: String, // 商品简介
-        goodsImg: String  //商品图片
-        goodsPrice: int // 商品标价
-        goodsAttrs: []
-    }]
-}]
-
-goods: [
-    {
-        goodsId: int, //商品id
-        goodsName: String, //商品名称
-        goodsSummary: String, // 商品简介
-        goodsImg: String  //商品图片
-        goodsPrice: int // 商品标价
-        goodsInfo: []
-    }
-]
-
-businessmans: [
-    {
-        
-    }
-]
