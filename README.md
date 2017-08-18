@@ -39,15 +39,13 @@
 
 2.使用了es6/7新特性来做并发，性能更高。
 
-3.使用了shell脚本用 pm2 来守护进程，更稳定。
+3.使用了mockjs模拟假数据。
 
-4.使用了mockjs模拟假数据。
+4.添加对数据库的支持，orm模块为`mongoose`。
 
-5.添加对数据库的支持，orm模块为`mongoose`。
+5.添加了中间层服务代理支持，在`routes/index.js`内部即可轻松添加，项目不需要则删除。
 
-6.添加了中间层服务代理支持，在`routes/index.js`内部即可轻松添加，项目不需要则删除。
-
-7.添加对websocket的支持，socket.io库。
+6.添加对websocket的支持，socket.io库。
 
 ## 待添加特性
 暂无
