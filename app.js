@@ -7,9 +7,11 @@ const static = require('koa-static');
 const app = new Koa();
 const server = require('http').Server(app.callback());
 // const io = require('socket.io')(server);
-const mongoose = require('./src/config/mongoose.js');
-// 开启静态渲染
-// app.use(static(__dirname + '/build'));
+const mongoose = require('./src/config/mongoose.js')();
+const config = require('./src/config');
+
+/* 静态资源目录 */
+/* app.use(static(__dirname + '/build')); */
 
 // 错误处理
 onerror(app);
@@ -21,11 +23,6 @@ const port = 3333; //设置本地服务端口
 // 中间件
 app.use(bodyparser());
 app.use(json());
-// waterline中间件，不用则删掉
-app.use(async(ctx, next) => {
-  ctx.request.models = app.models;
-  await next();
-});
 
 //资源加载记录log
 app.use(async(ctx, next) => {
@@ -35,27 +32,14 @@ app.use(async(ctx, next) => {
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
 });
 
-// mongoose初始化，必须在引入路由之前
-mongoose();
-
-// 引入路由
-const index = require('./src/routes/index');
-
 // 监听端口启动服务
 server.listen(port, () => console.log("服务已经启动，APIhost：" + host + port));
 
-// io.on('connection', function (socket) {
-//   socket.emit('连接成功');
-//   socket.on('onindex', function (data) {
-//     console.log(data);
-//   });
-//   var index = 1;
-//   function a(){
-//     socket.emit('news',index++);
-//   }
-//   setInterval(a,3000)
-// });
-
-// console.log(io)
-/*引入路由文件*/
+/* ================ 以下是路由模块 按类别分发=============== */
+// 主路由，负责跨域和反向代理
+const index = require('./src' + config.version + '/routes/index.js');
 app.use(index.routes(), index.allowedMethods());
+
+// 用户类路由，负责所有用户类api
+const user = require('./src' + config.version + '/routes/user/index.js');
+app.use(user.routes(), user.allowedMethods());

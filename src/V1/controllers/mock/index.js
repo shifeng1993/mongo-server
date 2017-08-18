@@ -1,6 +1,6 @@
 
 
-const testModel = require("../../models/mock/index.js");
+const testModel = require("../../models/mock");
 
 class indexController {
     /*mock数据示例*/
