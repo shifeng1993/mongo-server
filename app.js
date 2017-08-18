@@ -36,10 +36,18 @@ app.use(async(ctx, next) => {
 server.listen(port, () => console.log("服务已经启动，APIhost：" + host + port));
 
 /* ================ 以下是路由模块 按类别分发=============== */
+const getRouter = (params) => {
+  if(params) {
+    return require('./src' + config.version + '/routes/' + params);
+  } else {
+    return require('./src' + config.version + '/routes');
+  }
+}
 // 主路由，负责跨域和反向代理
-const index = require('./src' + config.version + '/routes/index.js');
-app.use(index.routes(), index.allowedMethods());
+app.use(getRouter().routes(), getRouter().allowedMethods());
 
 // 用户类路由，负责所有用户类api
-const user = require('./src' + config.version + '/routes/user/index.js');
-app.use(user.routes(), user.allowedMethods());
+app.use(getRouter('user').routes(), getRouter('user').allowedMethods());
+
+// 商品类路由，负责所有商品类api
+app.use(getRouter('goods').routes(), getRouter('goods').allowedMethods());
