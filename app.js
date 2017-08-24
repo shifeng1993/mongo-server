@@ -8,12 +8,12 @@ const app = new Koa();
 const server = require('http').Server(app.callback());
 // const io = require('socket.io')(server);
 const mongoose = require('./src/config/mongoose.js')();
-const router =  require('./src/routes/index.js')
+const router = require('./src/routes/index.js')
 
 /* 静态资源目录 */
-app.use(static(__dirname + '/test'));
+// app.use(static(__dirname + '/test'));
 
-// 错误处理
+/* 错误处理 */
 onerror(app);
 
 // 定义本地服务端口

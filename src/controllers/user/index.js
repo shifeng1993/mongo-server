@@ -87,7 +87,9 @@ class userController {
                     delete body[names[i]]
                 }
             }
-            const doc = await UserModel.update({_id: body.useruuid}, body);
+            const doc = await UserModel.update({
+                _id: body.useruuid
+            }, body);
             obj = {
                 message: 'setUserInfo success'
             }
