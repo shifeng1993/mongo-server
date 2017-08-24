@@ -1,7 +1,7 @@
 //config/mongoose.js
 const mongoose = require('mongoose');
 const config = require('../config');
-const models = require('..'+ config.version + '/models');
+const models = require('../models');
 
 // 设置全局v8promise
 mongoose.Promise=global.Promise;

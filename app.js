@@ -8,10 +8,10 @@ const app = new Koa();
 const server = require('http').Server(app.callback());
 // const io = require('socket.io')(server);
 const mongoose = require('./src/config/mongoose.js')();
-const config = require('./src/config');
+const router =  require('./src/routes/index.js')
 
 /* 静态资源目录 */
-/* app.use(static(__dirname + '/build')); */
+app.use(static(__dirname + '/test'));
 
 // 错误处理
 onerror(app);
@@ -36,18 +36,6 @@ app.use(async(ctx, next) => {
 server.listen(port, () => console.log("服务已经启动，APIhost：" + host + port));
 
 /* ================ 以下是路由模块 按类别分发=============== */
-const getRouter = (params) => {
-  if(params) {
-    return require('./src' + config.version + '/routes/' + params);
-  } else {
-    return require('./src' + config.version + '/routes');
-  }
-}
-// 主路由，负责跨域和反向代理
-app.use(getRouter().routes(), getRouter().allowedMethods());
 
-// 用户类路由，负责所有用户类api
-app.use(getRouter('user').routes(), getRouter('user').allowedMethods());
-
-// 商品类路由，负责所有商品类api
-app.use(getRouter('goods').routes(), getRouter('goods').allowedMethods());
+// 路由
+app.use(router.routes(), router.allowedMethods());

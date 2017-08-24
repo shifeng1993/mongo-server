@@ -1,5 +1,4 @@
   //config
   module.exports={
-    mongodb: 'mongodb://localhost/easyrn',
-    version: '/V1'
+    mongodb: 'mongodb://localhost/easyrn'
   }
