@@ -1,7 +1,7 @@
 {
   "name": "mongo-server",
-  "version": "1.0.1",
-  "description": "this is a koa2 API server",
+  "version": "1.0.0",
+  "description": "this is a API server",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

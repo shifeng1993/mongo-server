@@ -1,7 +1,12 @@
 # mongo-server
-一个使用koa2和mongodb构建的服务。
+使用koa2和mongodb构建的API服务。
+
+只有server部分，API原型模仿淘宝，特性在本页底部。
 
 可以mock数据，反向代理，支持http和tcp。
+
+就这样，想到再写吧。
+
 #### 技术栈：
 - nodejs
 - koa2
@@ -15,35 +20,33 @@
 
 ## 使用方法
 
-`git clone https://github.com/shifeng1993/mongo-server.git server`
+`git clone https://github.com/shifeng1993/mongo-server.git apiServer`
 
-`cd server`
+`cd apiServer`
 
 `npm install`
+
+启动mongodb
+`mongod`
 
 二选一
 `supervisor app` / `node app`
 
 ## 版本特性
 #### 1.0.0
-1.使用了koa2当做项目底层，node版本要求为大于7.6.0
+- 用户模块，包含用户注册，，用户登录。。以及用户详情页
 
-2.使用了es6/7新特性来做并发，性能更高。
+- 商品列表模块，包含商品展示，
 
-3.使用了mockjs模拟假数据。
+- 商品详情页面，商品具体详细信息。以及商品属性选择
 
-4.添加对数据库的支持，orm模块为`mongoose`。
+- 用户购物车模块，可以添加喜欢商品以及商品属性。
 
-5.添加了中间层服务代理支持，在`routes/index.js`内部即可轻松添加，项目不需要则删除。
+- 订单页面，购买后产生的订单详情，包含商品属性
 
-6.添加对websocket的支持，socket.io库。
-
-#### 1.0.1
-1.添加了对api版本的支持
-
-2.按类别优化路由，结构更清晰。
+- 供应商模块，对商品进行补充，更改，删除等操作。
 
 ## 待添加特性
-暂无
+- 模糊搜索模块，搜索结果呈现在商品列表中，
 
 
