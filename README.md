@@ -1,9 +1,11 @@
 # mongo-server
 使用koa2和mongodb构建的API服务。
 
-只有server部分，API原型模仿淘宝，特性在本页底部。
+只有server部分，API原型模仿手机淘宝，特性在本页底部。
 
 可以mock数据，反向代理，支持http和tcp。
+
+后面会再更新一个rn客户端部分，和一个B端的管理后台。
 
 就这样，想到再写吧。
 
