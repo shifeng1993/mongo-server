@@ -48,11 +48,14 @@ router.post('/user/setUserInfo', controllers.user.setUserInfo)
 
 /* ***订单类****/
 // 查看订单 ,没有订单id则为查看列表
-router.get('/order/getOrder/:useruuid/:orderid', controllers.order.getOrder)
-// 新增单个订单和新增批量订单
+router.get('/order/getOrder/:useruuid', controllers.order.getOrder) 
+router.get('/order/getOrder/:useruuid/:orderuuid', controllers.order.getOrder) 
+// 新增订单交给后台计算
 router.post('/order/addOrder', controllers.order.addOrder)
+// 提交订单
+router.post('/order/saveOrder', controllers.order.saveOrder)
 // 删除订单
-router.get('/order/removeOrder/:useruuid/:orderid', controllers.order.removeOrder)  
+router.get('/order/removeOrder/:useruuid/:orderuuid', controllers.order.removeOrder)  
 
 /* ***购物车类****/
 // 查看购物车
@@ -66,7 +69,7 @@ router.post('/shoppingCart/removeGoods', controllers.shoppingCart.removeGoods)
 
 /* ***商品类****/
 // 查询售卖商品
-router.get('/goods/getGoods', controllers.goods.getGoods)
+router.get('/goods/getGoodsList', controllers.goods.getGoodsList)
 // 查询售卖商品单个信息
 router.get('/goods/getGoods/:goodsuuid', controllers.goods.getGoods)
 // 添加售卖商品
