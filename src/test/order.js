@@ -1,4 +1,4 @@
-axios.defaults.baseURL = 'http://localhost:3333/api';
+axios.defaults.baseURL = 'http://192.168.212.60:3333/api';
 
 const useruuid = '599fb36fe453e30b5e484a78_1'
 

@@ -11,7 +11,7 @@ const mongoose = require('./src/config/mongoose.js')();
 const router = require('./src/routes/index.js')
 
 /* 静态资源目录 */
-// app.use(static(__dirname + '/test'));
+app.use(static(__dirname + '/static'));
 
 /* 错误处理 */
 onerror(app);

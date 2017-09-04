@@ -1,8 +1,8 @@
-axios.defaults.baseURL = 'http://localhost:3333/api';
+axios.defaults.baseURL = 'http://192.168.212.60:3333/api';
 
 let signIn = () => {
   const params = {
-    username: 'admin',
+    username: 'user1',
     password: '123'
   }
   axios
@@ -17,7 +17,7 @@ let signIn = () => {
 
 let signUp = () => {
   const params = {
-    username: 'admin',
+    username: 'user1',
     userphone: '123',
     password: '123',
     nickname: '321',
@@ -72,8 +72,8 @@ let app = () => {
       this.Controller();
     },
     Controller() {
-      // signIn()
-      signUp()
+      signIn()
+      // signUp()
       // getUserInfo()
       // setUserInfo()
     }

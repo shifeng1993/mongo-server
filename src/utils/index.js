@@ -15,6 +15,11 @@ class utils {
       if (!params[names[i]]) {
         delete params[names[i]]
       }
+      if(names[i] === 'pageSize'){
+        delete params.pageSize;
+      } else if(names[i] === 'currentPage'){
+        delete params.currentPage
+      }
     }
     return params
   }

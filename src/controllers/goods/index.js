@@ -5,9 +5,14 @@ const Data = utils.data()
 
 class goodsController {
   static async getGoodsList(ctx, next) {
-    const query = await utils.getParams(ctx.request.query);
+    if (!ctx.request.query.currentPage || !ctx.request.query.pageSize) {
+      return next(ctx.throw(400, 'params error'));
+    }
+    const currentPage = parseInt(ctx.request.query.currentPage)
+    const pageSize = parseInt(ctx.request.query.pageSize);
     let obj = null;
     try {
+      const query = await utils.getParams(ctx.request.query);
       const doc = await GoodsModel
         .find(query)
         .populate('goodsAttrs', {_id: 0})
@@ -15,8 +20,13 @@ class goodsController {
           password: 0,
           _id: 0,
           editTime: 0
-        });
-      obj = JSON.stringify(doc)
+        })
+        .skip((currentPage - 1) * pageSize)
+        .limit(pageSize)
+        .sort({'_id': -1})
+        .exec();
+      const total = await GoodsModel.count();
+      obj = JSON.stringify({data: doc, currentPage: currentPage, pageSize: pageSize, pageTotal: total})
     } catch (error) {
       console.log(error)
       obj = {

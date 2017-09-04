@@ -1,14 +1,10 @@
-axios.defaults.baseURL = 'http://localhost:3333/api';
+axios.defaults.baseURL = 'http://192.168.212.60:3333/api';
+const baseURL = 'http://localhost:3333/api';
 
 let getGoodsList = () => {
-  axios
-    .get('/goods/getGoodsList?goodsName=矿泉水')
-    .then((res) => {
-      console.log(res)
-    })
-    .catch((err, doc) => {
-      console.log(err)
-    })
+  // axios   .get('/goods/getGoodsList?goodsName=矿泉水')   .then((res) => {
+  // console.log(res)   })   .catch((err, doc) => {     console.log(err)   })
+  fetch(baseURL + '/goods/getGoodsList', {method: 'GET'})
 }
 
 const goodsuuid = '599fc0ef7975f910877e6e36'
@@ -51,7 +47,7 @@ let addGoods = () => {
 }
 let editGoods = () => {
   const params = {
-    goodsuuid: goodsuuid,
+    goodsuuid: '599fc0ef7975f910877e6e36',
     goodsName: '矿泉水', //商品名称
     goodsSummary: '这真的是他妈一瓶矿泉水', // 商品简介
     goodsImg: '', //商品图片
@@ -67,20 +63,23 @@ let editGoods = () => {
     .catch((err, doc) => {
       console.log(err)
     })
+    //  fetch(baseURL + '/goods/editGoods', {     method: 'POST',     header: {
+    //  'Content-Type': 'application/json;charset=UTF-8'     },     body: params
+    // })
 }
 
-let removeGoods = () =>{
+let removeGoods = () => {
   const params = {
     goodsuuids: ['599fc57e148833122ae1df20', '599fc575148833122ae1df1e']
   }
   axios
-  .post('/goods/removeGoods', params)
-  .then((res) => {
-    console.log(res)
-  })
-  .catch((err, doc) => {
-    console.log(err)
-  })
+    .post('/goods/removeGoods', params)
+    .then((res) => {
+      console.log(res)
+    })
+    .catch((err, doc) => {
+      console.log(err)
+    })
 }
 
 let app = () => {
@@ -89,11 +88,10 @@ let app = () => {
       this.Controller();
     },
     Controller() {
-      getGoodsList()
-      // getGoods()
-      // addGoods()
-      // editGoods()
-      // removeGoods()
+      // getGoodsList()
+      // getGoods() 
+      addGoods() 
+      // editGoods() removeGoods()
     }
   };
 };
