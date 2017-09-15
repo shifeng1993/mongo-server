@@ -17,23 +17,23 @@ class userController {
         const supplierdoc = await SupplierModel.findOne({username: body.username});
         if (!supplierdoc) {
           obj = {
-            message: 'signIn failed, user nothing'
+            message: '登录失败，用户不存在'
           }
         } else {
           obj = {
-            message: 'signIn success',
+            message: '登录成功',
             useruuid: utils.setUuid(supplierdoc._id, 2)
           }
         }
       } else {
         if (userdoc.password == body.password) {
           obj = {
-            message: 'signIn success',
+            message: '登录成功',
             useruuid: utils.setUuid(userdoc._id, 1)
           }
         } else {
           obj = {
-            message: 'signIn failed, password error'
+            message: '登录失败，密码错误'
           }
         }
       }

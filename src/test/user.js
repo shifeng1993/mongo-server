@@ -21,7 +21,7 @@ let signUp = () => {
     userphone: '123',
     password: '123',
     nickname: '321',
-    userType: '用户'
+    userType: '商户'
   }
   axios
     .post('/user/signUp', params)
@@ -72,7 +72,7 @@ let app = () => {
       this.Controller();
     },
     Controller() {
-      signIn()
+      // signIn()
       // signUp()
       // getUserInfo()
       // setUserInfo()

@@ -18,7 +18,7 @@ let getGoods = () => {
       console.log(err)
     })
 }
-let useruuid = '599f99f2f7ca72710fbc9b67_2'
+let useruuid = '59af4f552ac0ac0a70c64caa_2'
 let addGoods = () => {
   const params = {
     goodsName: '矿泉水', //商品名称
