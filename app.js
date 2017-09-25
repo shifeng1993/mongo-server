@@ -7,6 +7,7 @@ const static = require('koa-static');
 const app = new Koa();
 const server = require('http').Server(app.callback());
 // const io = require('socket.io')(server);
+const config = require('./src/config');
 const mongoose = require('./src/config/mongoose.js')();
 const router = require('./src/routes/index.js')
 
@@ -15,10 +16,6 @@ app.use(static(__dirname + '/static'));
 
 /* 错误处理 */
 onerror(app);
-
-// 定义本地服务端口
-const host = 'http://127.0.0.1:';
-const port = 3333; //设置本地服务端口
 
 // 中间件
 app.use(bodyparser());
@@ -33,7 +30,7 @@ app.use(async(ctx, next) => {
 });
 
 // 监听端口启动服务
-server.listen(port, () => console.log("服务已经启动，APIhost：" + host + port));
+server.listen(config.port, () => console.log("服务已经启动~ \n端口:" + config.port));
 
 /* ================ 以下是路由模块 按类别分发=============== */
 

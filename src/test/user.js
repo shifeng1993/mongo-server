@@ -1,4 +1,4 @@
-axios.defaults.baseURL = 'http://192.168.212.60:3333/api';
+axios.defaults.baseURL = 'http://localhost:3000';
 
 let signIn = () => {
   const params = {
@@ -33,8 +33,8 @@ let signUp = () => {
     })
 }
 
+const uuid = '59be14663c33c746f9bf51b2_2'
 let getUserInfo = () => {
-  const uuid = '599f99f2f7ca72710fbc9b67_2'
   axios
     .get('/user/getUserInfo/' + uuid)
     .then((res) => {
@@ -47,7 +47,7 @@ let getUserInfo = () => {
 
 let setUserInfo = () => {
   const setUserInfParams = {
-    useruuid: '599f99f2f7ca72710fbc9b67_2',
+    useruuid: uuid,
     username: '',
     userphone: '你特么到底想要几个大傻逼',
     password: '',
@@ -73,7 +73,7 @@ let app = () => {
     },
     Controller() {
       // signIn()
-      // signUp()
+      signUp()
       // getUserInfo()
       // setUserInfo()
     }

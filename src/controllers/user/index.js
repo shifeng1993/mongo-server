@@ -20,9 +20,15 @@ class userController {
             message: '登录失败，用户不存在'
           }
         } else {
-          obj = {
-            message: '登录成功',
-            useruuid: utils.setUuid(supplierdoc._id, 2)
+          if (supplierdoc.password == body.password) {
+            obj = {
+              message: '登录成功',
+              useruuid: utils.setUuid(supplierdoc._id, 2)
+            }
+          } else {
+            obj = {
+              message: '登录失败，密码错误'
+            }
           }
         }
       } else {

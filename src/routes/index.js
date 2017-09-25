@@ -2,7 +2,7 @@ const koaRouter = require('koa-router');
 
 // 统一增加版本前缀
 const router = koaRouter({
-    prefix: '/api'
+    // prefix: '/api'
 });
 
 /* 反向代理配置 */

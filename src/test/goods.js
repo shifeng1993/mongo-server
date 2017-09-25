@@ -1,4 +1,4 @@
-axios.defaults.baseURL = 'http://192.168.212.60:3333/api';
+axios.defaults.baseURL = 'https://api.shifeng1993.com';
 const baseURL = 'http://localhost:3333/api';
 
 let getGoodsList = () => {
@@ -18,12 +18,13 @@ let getGoods = () => {
       console.log(err)
     })
 }
-let useruuid = '59af4f552ac0ac0a70c64caa_2'
+
+const useruuid = '59be14663c33c746f9bf51b2_2'
 let addGoods = () => {
   const params = {
     goodsName: '矿泉水', //商品名称
     goodsSummary: '一瓶矿泉水', // 商品简介
-    goodsImg: '目前没有', //商品图片
+    goodsImg: 'https://api.shifeng1993.com/img/3.jpg', //商品图片
     goodsPrice: 300, // 商品标价
     goodsType: 2, // 商品分类
     goodsStock: 9999, // 商品库存
