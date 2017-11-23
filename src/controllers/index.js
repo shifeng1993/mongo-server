@@ -4,4 +4,5 @@ module.exports = {
   order: require('./order'),                // 订单类
   shoppingCart: require('./shoppingCart'),  // 购物车类
   goods: require('./goods'),                // 商品类
+  upload: require('./upload')
 }

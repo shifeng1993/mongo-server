@@ -14,6 +14,7 @@ const UserSchema = new mongoose.Schema({
   nickname: String, // 昵称
   summary: String, //简介
   userImg: String, // 头像
+  gender: String, // 性别
   editTime: {
     type: Date,
     default: Date.now

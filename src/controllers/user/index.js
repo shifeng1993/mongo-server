@@ -139,20 +139,28 @@ class userController {
       const userType = await parseInt(utils.getUuid(body.useruuid)[1])
       switch (userType) {
         case 1:
-          const userdoc = await UserModel.update({
+          await UserModel.update({
             _id: useruuid
           }, body);
-          obj = {
-            message: 'setUserInfo success'
-          };
+          const userdoc = await UserModel.findOne({
+            _id: useruuid
+          }, {
+            password: 0,
+            _id: 0
+          });
+          obj = JSON.stringify(userdoc);
           break;
         case 2:
-          const supplierdoc = await SupplierModel.update({
+          await SupplierModel.update({
             _id: useruuid
           }, body);
-          obj = {
-            message: 'setUserInfo success'
-          };
+          const supplierdoc = await SupplierModel.findOne({
+            _id: useruuid
+          }, {
+            password: 0,
+            _id: 0
+          });
+          obj = JSON.stringify(supplierdoc);
           break;
         default:
           obj = {

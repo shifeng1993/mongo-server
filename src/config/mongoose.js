@@ -7,7 +7,7 @@ const models = require('../models');
 mongoose.Promise=global.Promise;
 
 // 开启debug
-mongoose.set('debug',true);
+// mongoose.set('debug',true);
 
 // 监控连接
 mongoose.connection.on('error', (error) => {

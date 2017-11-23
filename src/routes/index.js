@@ -44,7 +44,7 @@ router.post('/user/signUp', controllers.user.signUp)
 // 查看用户资料
 router.get('/user/getUserInfo/:useruuid', controllers.user.getUserInfo)
 // 编辑用户资料
-router.post('/user/setUserInfo', controllers.user.setUserInfo)
+router.patch('/user/setUserInfo', controllers.user.setUserInfo)
 
 /* ***订单类****/
 // 查看订单 ,没有订单id则为查看列表
@@ -79,6 +79,7 @@ router.post('/goods/editGoods', controllers.goods.editGoods)
 // 删除售卖商品, 支持批量
 router.post('/goods/removeGoods', controllers.goods.removeGoods)
 
-
+// 图片上传
+router.post('/upload', controllers.upload)
 
 module.exports = router;

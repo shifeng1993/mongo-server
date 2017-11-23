@@ -10,6 +10,7 @@ const SupplierSchema = new mongoose.Schema({
   }, // 手机
   password: String, // 密码
   nickname: String, // 昵称
+  gender: String, // 性别
   summary: String, //简介
   userImg: String, // 头像
   editTime: {

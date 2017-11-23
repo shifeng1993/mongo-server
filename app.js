@@ -21,6 +21,8 @@ onerror(app);
 app.use(bodyparser());
 app.use(json());
 
+
+
 //资源加载记录log
 app.use(async(ctx, next) => {
   const start = new Date();
